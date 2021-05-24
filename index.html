@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://yastatic.net/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <form class="quiz-form">
+        <input type="hidden" name="project_name" value="Site Name">
+        <input type="hidden" name="admin_email" value="admin@mail.com">
+        <input type="hidden" name="form_subject" value="Form Subject">
+        <div class="quiz-header">
+            <div class="quiz-progressbar">
+                <div class="progress"></div>
+                
+            </div>
+            <div class="quiz-percent"></div>
+            <div class="quiz-counter"></div>
+        </div>
+        <div class="quiz-intro">
+            <h2>Start quiz</h2>
+        </div>
+        <div class="quiz-outro">
+            <h2>Thank you</h2>
+        </div>
+        <div class="quiz-body">
+            <div>
+                <h4>Question 1</h4>
+                <label><input type="radio" name="q1" value="1" required> 1</label>
+                <label><input type="radio" name="q1" value="2"> 2</label>
+                <label><input type="radio" name="q1" value="3"> 3</label>
+            </div>
+            <div>
+                <h4>Question 2</h4>
+                <label><input type="text" name="q2" placeholder="Your answer" required></label>
+                <label><input type="text" name="q22" placeholder="Your answer2" required></label>
+                <label><input type="text" name="q23" placeholder="Your answer3" required></label>
+            </div>
+            <div>
+                <h4>Question 3</h4>
+                <label><input type="radio" name="q3" value="a" required> a</label>
+                <label><input type="radio" name="q3" value="b"> b</label>
+                <label><input type="radio" name="q3" value="c"> c</label>
+            </div>
+            <div>
+                <h4>Question 4</h4>
+                <label><input type="checkbox" name="q4[]" value="x"> x</label>
+                <label><input type="checkbox" name="q4[]" value="y"> y</label>
+                <label><input type="checkbox" name="q4[]" value="z"> z</label>
+            </div>
+            <div>
+                <h4>Question 5</h4>
+                <label><input type="range" name="q5" min="0" max="100" step="1" value="50"></label>
+            </div>
+            <div>
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="text" name="phone" placeholder="Phone" required>
+            </div>
+        </div>
+        <div class="quiz-footer">
+            <button type="button" class="back">Back</button>
+            <button type="button" class="start">Start</button>
+            <button type="button" class="next">Next</button>
+            <button type="button" class="submit">Submit</button>
+            <button type="button" class="restart">Restart</button>
+        </div>
+    </form>
+
+    <script src="quiz.js"></script>
+    <script>
+        new quiz({
+            element: '.quiz-form',
+            intro: true,
+            outro: true,
+            restart: true,
+            // back: false,
+            autoNext: true,
+            divider: '/',
+            onSubmit: function(i){
+                setTimeout(()=>{
+                    console.log('submit', i.get('name'), i.get('phone'))
+                }, 1000)
+            },
+            callback: function(){ 
+                console.log('quiz callback') 
+            }
+        })
+    </script>
+</body>
+
+</html>
